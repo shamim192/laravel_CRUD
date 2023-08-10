@@ -19,6 +19,7 @@ public function up()
         $table->id();
         $table->string('title');
         $table->text('description');
+        $table ->string('image')-> nullable();
         $table->timestamps();
     });
 }

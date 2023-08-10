@@ -32,17 +32,25 @@ class TaskController extends Controller
 
 
     public function store(Request $request) {
+        // dd($request->file('image'));
         $formFields = $request->validate([
             'title' => 'required',    
-            'description' => 'required'
+            'description' => 'required',
+            
         ]);
 
       
-        $formFields['user_id'] = auth()->id();
+       
+
+        if($request -> hasFile('image')) {
+            $formFields['image'] = $request -> file('image') -> store('logos', 'public');
+        }
+       
 
         Task::create($formFields);
 
-        return redirect('/')->with('message', 'Listing created successfully!');
+
+        return redirect(route('tasks.index'))->with('message', 'Listing created successfully!');
     }
 
     public function edit(Task $task)

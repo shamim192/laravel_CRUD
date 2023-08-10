@@ -11,6 +11,7 @@
                 <th>ID</th>
                 <th>Title</th>
                 <th>Description</th>
+                <th>Image</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -20,6 +21,7 @@
                     <td>{{ $task->id }}</td>
                     <td>{{ $task->title }}</td>
                     <td>{{ $task->description }}</td>
+                    <td><img src="{{ asset('storage/' . $task->image) }}" alt="Product Image" class="img-thumbnail" width="100"></td>
                     <td>
                         <a href="{{ route('tasks.edit', $task) }}" class="btn btn-sm btn-info">Edit</a>
                         <form action="{{ route('tasks.destroy', $task) }}" method="post" style="display: inline;">

@@ -36,6 +36,7 @@ class TaskController extends Controller
         $formFields = $request->validate([
             'title' => 'required',    
             'description' => 'required',
+            'image' => 'required'
             
         ]);
 

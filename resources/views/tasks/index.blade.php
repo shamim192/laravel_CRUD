@@ -29,9 +29,40 @@
                             @method('DELETE')
                             <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
                         </form>
+                        <a href="{{ route('tasks.subtasks.create', $task->id) }}" class="btn btn-primary">Add Subtask</a>
+                    </td>
+                    <td>
+                        <div class="mt-4">
+                            <h3>Subtasks</h3>
+                            @if ($task->subtasks->isEmpty())
+                                <p>No subtasks available.</p>
+                            @else
+                                <ul>
+                                    @foreach ($task->subtasks as $subtask)
+                                        <li>{{ $subtask->title }} @if ($subtask->completed) (Completed) @endif</li>
+                                    @endforeach
+                                </ul>
+                            @endif
+                           
+                        </div>
                     </td>
                 </tr>
             @endforeach
+
+            {{-- <div class="mt-4">
+                <h3>Subtasks</h3>
+                @if ($task->subtasks->isEmpty())
+                    <p>No subtasks available.</p>
+                @else
+                    <ul>
+                        @foreach ($task->subtasks as $subtask)
+                            <li>{{ $subtask->title }} @if ($subtask->completed) (Completed) @endif</li>
+                        @endforeach
+                    </ul>
+                @endif
+               
+            </div> --}}
+        </div>
         </tbody>
     </table>
 @endsection
